@@ -13,36 +13,6 @@ $(document).ready(function(){
     modifyZhihu();
 });
 
-var hostname = location.hostname
-var pathname = location.pathname
-var href = location.href
-
-String.prototype.contains = function(s) {
-	return -1 !== this.indexOf(s)
-}
-
-String.prototype.startsWith = function(s) {
-	return this.slice(0, s.length) == s
-}
-
-function blockListeners(element, events) {
-	function stopBubbling(event) {
-		event.stopPropagation()
-	}
-
-	var eventList = events.split(' ')
-	if(eventList) {
-		var i, event
-		for(i = eventList.length - 1; i > -1; i--) {
-			event = eventList[i].trim()
-			if(event) {
-				element.removeEventListener(event, stopBubbling, true)
-				element.addEventListener(event, stopBubbling, true)
-			}
-		}
-	}
-}
-
 function modifyZhihu() {
     function getRealUrl(l) {
         if (l.indexOf("?target=") < 0)
